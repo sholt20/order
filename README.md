@@ -1,38 +1,51 @@
-# Solo React Project
+# Order
+## A discord clone, but light theme is the only choice.
+###### *I know, its gross*
 
-This is the backend for the Solo React project.
 
-## Getting started
+### MVP Feature list:
 
-1. Clone this repository
-2. Install dependencies (`npm install`)
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file with CREATEDB privileges
+- Servers anyone can join via links.
+- Channels within the servers where messages are sent.
+- Live chat within these channels.
+- Private servers between two people.
+- Log in and log out.
+- Users cannot see neither servers they have not joined, nor direct messages that do not pertain to them.
 
-5. Run
-   * `npm run db:create`
-   * `npm run db:migrate`
-   * `npm run db:seed:all`
-   * `npm start`
+### MVP User Stories:
 
-## Deploy to Heroku
+- As a user, I want to be able to create an account with a displayed username so others can easily identify me.
+- As a user, I want to be able to log out of my account and log back in, to both protect my account and use it on other devices.
+- As a user, I want to be able to join servers easily to discuss topics relevant to myself.
+- As a user, I want to be able to directly message other users privately as to have private conversations.
+- As a user, I do not want to see servers and conversations not relevant to my interests to reduce visual clutter.
 
-1. Create a new project
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run `$ heroku login`
-5. Add heroku as a remote to this git repo `$ heroku git:remote -a <project_name>`
-6. Push the project to heroku `$ git push heroku master`
-7. Connect to the heroku shell and prepare your database
+### Extra Features:
 
-```bash
-    $ heroku run bash
-    $ sequelize-cli db:migrate
-    $ sequelize-cli db:seed:all
-```
-(You can interact with your database this way as youd like, but beware that `db:drop` should not be run in the heroku environment)
+- A discord bot/webhook that will relay all messages from a specified channel on order to a specific channel on a discord server.
+- A discord bot that has a command that allows members within a discord server to send a message to appear on order.
+- Users can create and delete servers.
+- Users can create and delete channels (in a server they own).
+- Channel categories (collapsible collections of channels).
+- Existing channels can be added to categories.
+- Channels in categories can be removed from said category, or moved to new ones.
+- Giphy integration for sending gifs in channels.
+- A listing of all existing servers, only visible on opening another part of the app.
+- Adding and removing other users from a friends list.
+- Pinned messages
 
-8. Add a `REACT_APP_BASE_URL` config var.  This should be the full URL of your react app: i.e. "https://solo-react.herokuapp.com"
+### Plan of attack:
 
-9. profit
+- Design database structure
+- Design component structure (aka look at discord some more)
+- Design store/state structure
+- Set up database with basic seeded data
+- Set up back end routes
+- Create react-redux basic site structure
+- Create fine details and additional, smaller components
+- Style site
+- Add additional features (starting with discord webhook, then bot integration)
+
+### Database diagram link:
+
+https://dbdiagram.io/d/5f6e833b7da1ea736e2f6713
