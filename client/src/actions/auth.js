@@ -1,14 +1,15 @@
 export const SET_TOKEN = 'SET_TOKEN';
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';
-const TOKEN_KEY = "ORDER_APP_TOKEN"
+export const TOKEN_KEY = "ORDER_APP_TOKEN"
 
 export const removeToken = () => ({
     type: REMOVE_TOKEN,
 });
 
-  export const setToken = token => ({
+  export const setToken = (username, token) => ({
     type: SET_TOKEN,
     token,
+    username
 });
 
   export const loadToken = () => async dispatch => {
@@ -27,24 +28,17 @@ export const login = (username, password) => async dispatch => {
     if (response.ok) {
       const { token } = await response.json();
       window.localStorage.setItem(TOKEN_KEY, token);
-      dispatch(setToken(token));
+      dispatch(setToken(username, token));
     }
 };
 
 export const logout = () => async (dispatch, getState) => {
-    const { authentication: { token } } = getState();
-    const response = await fetch(`/logout`, {
-      method: 'delete',
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (response.ok) {
-      window.localStorage.removeItem(TOKEN_KEY);
-      dispatch(removeToken());
-    }
+    window.localStorage.removeItem(TOKEN_KEY);
+    dispatch(removeToken());
 };
 
-export const signUp = () => (username, email, password) => async dispatch => {
-    const response = await fetch('/sign-up', {
+export const signUp = (username, email, password) => async dispatch => {
+    const response = await fetch('/api/sign-up', {
         method: 'post',
         body: JSON.stringify({ username, email, password }),
         headers: {
@@ -55,6 +49,6 @@ export const signUp = () => (username, email, password) => async dispatch => {
     if (response.ok) {
         const { token } = await response.json();
         window.localStorage.setItem(TOKEN_KEY, token);
-        dispatch(setToken(token));
+        dispatch(setToken(username, token));
     }
 }
