@@ -37,7 +37,7 @@ export const logout = () => async (dispatch, getState) => {
     dispatch(removeToken());
 };
 
-export const signUp = () => (username, email, password) => async dispatch => {
+export const signUp = (username, email, password) => async dispatch => {
     const response = await fetch('/api/sign-up', {
         method: 'post',
         body: JSON.stringify({ username, email, password }),
@@ -49,6 +49,6 @@ export const signUp = () => (username, email, password) => async dispatch => {
     if (response.ok) {
         const { token } = await response.json();
         window.localStorage.setItem(TOKEN_KEY, token);
-        dispatch(setToken(token));
+        dispatch(setToken(username, token));
     }
 }

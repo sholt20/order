@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
         }
 
         case REMOVE_TOKEN: {
-            const nextState = { ...state, loggedIn: false };
+            const nextState = { ...state, loggedIn: false, currUser: null };
             delete nextState.token;
             return nextState;
         }

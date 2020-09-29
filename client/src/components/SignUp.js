@@ -4,9 +4,9 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../actions/auth';
 
 const SignUp = () => {
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
-    const [email, setEmail] = useState()
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
     const token = useSelector(state => state.auth.token);
     const dispatch = useDispatch();
 
