@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../actions/auth'
 import Home from './Home'
+import OrderApp from './OrderApp';
 
 const Navbar = () => {
     const current = useSelector(state => state.auth.currUser)
@@ -47,7 +48,7 @@ const Navbar = () => {
 
                 <Route exact path={`/app/${ current }`}>
                     {current
-                        ? <p>In the app</p>
+                        ? <OrderApp username={ current }/>
                         : <Redirect to="/" />
                     }
                 </Route>

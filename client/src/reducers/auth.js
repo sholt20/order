@@ -12,7 +12,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_TOKEN: {
-            console.log(action);
+            console.log(action.username)
             return {
                 ...state,
                 token: action.token,
@@ -22,6 +22,7 @@ const authReducer = (state = initialState, action) => {
         }
 
         case REMOVE_TOKEN: {
+            console.log(state.currUser)
             const nextState = { ...state, loggedIn: false, currUser: null };
             delete nextState.token;
             return nextState;

@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     User.hasMany(models.Server, { foreignKey: 'owner_id' })
     User.hasMany(models.Post, { foreignKey: 'author_id' })
-    User.belongsToMany(models.Server, {through: 'Server_users', foreignKey: 'server_id' })
+    User.belongsToMany(models.Server, {through: models.Server_users, foreignKey: 'server_id' })
+    // User.belongsTo(models.Server_users, { foreignKey: 'user_id' })
   };
 
   User.prototype.validatePassword = function (password) {

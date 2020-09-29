@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   Server.associate = function(models) {
     Server.belongsTo(models.User, { foreignKey: 'owner_id' })
     Server.hasMany(models.Channel, { foreignKey: 'server_id' })
-    Server.belongsToMany(models.User, { through: 'Server_users', foreignKey: 'user_id' })
+    Server.belongsToMany(models.User, { through: models.Server_users, foreignKey: 'user_id' })
+    // Server.belongsTo(models.Server_users, { foreignKey: 'server_id' })
   };
   return Server;
 };

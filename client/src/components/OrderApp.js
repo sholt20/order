@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Navbar from './components/Navbar'
 
-const OrderApp = () => {
-    // const servers = useSelector(state => state.servers.name)
+const OrderApp = ({ username }) => {
+    const [servers, setServers] = useState([]);
+    console.log(username)
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`/api/servers/${username}`);
+            const responseData = await response.json();
+            setServers(responseData.servers);
+        }
+        fetchData();
+    }, []);
 
     return (
         <ul>
-            {/* Iterate over servers and display them */}
+            {servers.map(server => <li key={server.id}>{server.name}</li>)}
         </ul>
     )
 }
+
+export default OrderApp;
