@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+import ChannelsList from './ChannelsList';
 
 const OrderApp = ({ username }) => {
     const [servers, setServers] = useState([]);
-    console.log(username)
 
     useEffect(() => {
         async function fetchData() {
@@ -12,12 +12,27 @@ const OrderApp = ({ username }) => {
             setServers(responseData.servers);
         }
         fetchData();
-    }, []);
+    }, [username]);
 
     return (
-        <ul>
-            {servers.map(server => <li key={server.id}>{server.name}</li>)}
-        </ul>
+        <BrowserRouter>
+            <ul>
+                <li><NavLink to={`/app/${username}/dm`}>DMs</NavLink></li>
+                {servers.map(server => (
+                    <li key={server.id}>
+                        <NavLink to={`/app/${server.id}`}>{server.name}</NavLink>
+                    </li>))}
+            </ul>
+            <Switch>
+                <Route path={`/app/${username}/dm`}>
+                    <p>DMs live here</p>
+                </Route>
+
+                <Route path={"/app/:serverId"}>
+                    <ChannelsList username={username} />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     )
 }
 

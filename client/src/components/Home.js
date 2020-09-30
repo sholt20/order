@@ -1,9 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter, Redirect, Switch, Route, NavLink } from 'react-router-dom';
 
 const Home = () => {
-    const current = useSelector(state => state.auth.currUser)
     return (
         <>
             <div>
