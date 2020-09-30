@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, NavLink, Redirect, Switch, useParams } from 'react-router-dom';
+import { matchPath, useLocation, useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Posts = () => {
-    const { channelId } = useParams();
-    console.log(useParams())
+const Posts = ({ serverId }) => {
+    const channelId = useParams()
+    // console.log(channelId)
+    const location = useLocation()
+    console.log(location)
+    // console.log(channelId)
     useEffect(() => {
-        console.log(channelId)
+        // console.log(channelId)
     }, [channelId])
 
-    if (!channelId) {
-        return null;
-    } else {
-        return (
-            <p>In channel {channelId}</p>
-        )
-    }
+    return (
+        <p>Filler</p>
+    )
 }
 
-export default Posts;
+export default withRouter(Posts);
