@@ -7,7 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('starter:server');
 const http = require('http');
-const WebSocket = require('ws')
+const socketio = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -21,16 +21,16 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server })
+const io = socketio(server, { origins: '*:*'})
 
-wss.on('connection', (ws) => {
-  console.log('connected!')
-  ws.on('message', (jsonData) => {
-    console.log(`Message: ${jsonData}`)
-  })
+io.on('connection', socket => {
+  console.log('New connection to WS')
 
-  ws.on('close', (e) => {
-    console.log(e)
+  socket.on('chatMessage', (response) => {
+    const resArr = response.split(' from ')
+    const message = resArr[0].trim()
+    const username = resArr[1].trim()
+    io.emit('message', `${username} - ${message}`)
   })
 })
 /**

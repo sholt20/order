@@ -11,11 +11,23 @@ export const getPosts = (posts, channelId) => ({
     posts
 })
 
-export const sendMessage = (message) => async (dispatch) => {
-    // const res = await fetch(`/api/${channelId}`)
+export const sendMessage = (message, channelId, username) => async (dispatch) => {
+    const res = await fetch(`/api/posts/channel/${channelId}`, {
+        method: 'post',
+        body: JSON.stringify({ message, channelId, username }),
+        headers: {
+            "Content-Type":"application/json"
+        }
+    })
+    if (res.ok) {
+        const newPost = await res.json();
+        console.log(newPost)
+        dispatch(createPost(newPost))
+    }
 }
 
 export const getMessages = (channelId) => async (dispatch) => {
+    console.log(channelId)
     const res = await fetch(`/api/posts/channel/${channelId}`)
     if (res.ok) {
         const { posts } = await res.json()

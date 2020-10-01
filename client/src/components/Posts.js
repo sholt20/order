@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMessages } from '../actions/postActions'
+import Chat from './Chat'
 
 const Posts = ({ serverId }) => {
     const { channelId } = useParams()
@@ -10,18 +11,28 @@ const Posts = ({ serverId }) => {
 
     useEffect(() => {
         dispatch(getMessages(channelId))
-    }, [channelId])
+    }, [channelId, posts])
 
     return (
-        <div> {
+        <div>
+            <div>
+                {
+                isNaN(parseInt(channelId, 10))
+                    ? null
+                    : <ul>{
+                        posts.map(post => <div key={post.id}>
+                            <p>{post.author_name}</p><p>{post.message}</p>
+                        </div>)
+                    }
+                    </ul>
+                }
+            </div>
+            {
             isNaN(parseInt(channelId, 10))
                 ? null
-                : <ul>{
-                    posts.map(post => <div key={post.id}>
-                        <p>{post.author_name}</p><p>{post.message}</p>
-                    </div>)
-                }</ul>
+                : <Chat channelId={channelId} posts={posts} />
             }
+
         </div>
     )
 }

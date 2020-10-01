@@ -8,11 +8,22 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_POSTS: {
+            console.log(action)
             const newPosts = [...action.posts]
             const channelId = action.channelId
             return {
                 posts: newPosts,
                 channelId
+            }
+        }
+
+        case CREATE_POST: {
+            const newPosts = [...state.posts, action.message.newPost]
+
+            return {
+                ...state,
+                posts: newPosts,
+                channelId: action.channel_id
             }
         }
         default: return state;
