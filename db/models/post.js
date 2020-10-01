@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Post.associate = function(models) {
     Post.belongsTo(models.User, { foreignKey: 'author_id' })
+    Post.belongsTo(models.User, { foreignKey: 'author_name' })
     Post.belongsTo(models.Channel, { foreignKey: 'channel_id' })
   };
   return Post;

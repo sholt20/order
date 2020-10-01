@@ -1,19 +1,28 @@
-import React, { useEffect } from 'react';
-import { matchPath, useLocation, useParams, withRouter } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getMessages } from '../actions/postActions'
 
 const Posts = ({ serverId }) => {
-    const channelId = useParams()
-    // console.log(channelId)
-    const location = useLocation()
-    console.log(location)
-    // console.log(channelId)
+    const { channelId } = useParams()
+    const dispatch = useDispatch()
+    const posts = useSelector(state => state.posts.posts)
+
     useEffect(() => {
-        // console.log(channelId)
+        dispatch(getMessages(channelId))
     }, [channelId])
 
     return (
-        <p>Filler</p>
+        <div> {
+            isNaN(parseInt(channelId, 10))
+                ? null
+                : <ul>{
+                    posts.map(post => <div key={post.id}>
+                        <p>{post.author_name}</p><p>{post.message}</p>
+                    </div>)
+                }</ul>
+            }
+        </div>
     )
 }
 

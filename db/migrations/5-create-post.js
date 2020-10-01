@@ -22,6 +22,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Channels' }
       },
+      author_name: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        references: {model: 'Users', key: 'username'}
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

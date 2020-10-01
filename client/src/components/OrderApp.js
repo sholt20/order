@@ -20,7 +20,7 @@ const OrderApp = ({ username }) => {
                 <li><NavLink to={`/app/${username}/dm`}>DMs</NavLink></li>
                 {servers.map(server => (
                     <li key={server.id}>
-                        <NavLink to={`/app/${server.id}`}>{server.name}</NavLink>
+                        <NavLink to={`/app/${server.id}/:channelId`}>{server.name}</NavLink>
                     </li>))}
             </ul>
             <Switch>
@@ -28,7 +28,7 @@ const OrderApp = ({ username }) => {
                     <p>DMs live here</p>
                 </Route>
 
-                <Route path={"/app/:serverId"}>
+                <Route path={"/app/:serverId/:channelId"}>
                     <ChannelsList username={username} />
                 </Route>
             </Switch>

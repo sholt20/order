@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, NavLink, useParams, Route, Switch } from 'react-router-dom';
+import { NavLink, useParams, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadServer } from '../actions/serverActions';
 import Posts from './Posts';
 
 const ChannelsList = () => {
     const channels = useSelector(state => state.servers.channels)
-    let { serverId, channelId } = useParams()
+    let { serverId } = useParams()
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const ChannelsList = () => {
     }, [serverId])
 
     return (
-        <BrowserRouter>
+        <>
             <ul>
                 {channels.map(channel => (
                     <li key={channel.id}>
@@ -24,12 +24,9 @@ const ChannelsList = () => {
             </ul>
 
             <Switch>
-                <Route to={`/app/${serverId}/:channelId`} render={() => <Posts serverId={serverId} channelId={channelId} /> } />
-
+                <Route to={`/app/${serverId}/:channelId`} render={() => <Posts serverId={serverId} /> } />
             </Switch>
-
-
-        </BrowserRouter>
+        </>
     )
 }
 
