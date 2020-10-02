@@ -8,7 +8,7 @@ import socketIOClient from 'socket.io-client';
 const Chat = ({ channelId, posts }) => {
     const dispatch = useDispatch()
     const [messageText, setMessageText] = useState('')
-    const socket = socketIOClient('http://localhost:3000')
+    const socket = socketIOClient(process.env.REACT_APP_WS_URL)
     const username = useSelector(state => state.auth.currUser)
 
     const handleChange = (e) => {

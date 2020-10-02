@@ -27,7 +27,6 @@ export const sendMessage = (message, channelId, username) => async (dispatch) =>
 }
 
 export const getMessages = (channelId) => async (dispatch) => {
-    console.log(channelId)
     const res = await fetch(`/api/posts/channel/${channelId}`)
     if (res.ok) {
         const { posts } = await res.json()

@@ -11,7 +11,7 @@ const Posts = ({ serverId }) => {
 
     useEffect(() => {
         dispatch(getMessages(channelId))
-    }, [channelId, posts])
+    }, [channelId])
 
     return (
         <div>

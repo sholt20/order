@@ -8,7 +8,7 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_POSTS: {
-            console.log(action)
+            console.log('in action', action)
             const newPosts = [...action.posts]
             const channelId = action.channelId
             return {
@@ -23,7 +23,7 @@ const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: newPosts,
-                channelId: action.channel_id
+                channelId: action.channelId
             }
         }
         default: return state;

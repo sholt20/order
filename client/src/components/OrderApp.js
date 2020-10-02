@@ -20,12 +20,12 @@ const OrderApp = ({ username }) => {
                 <li><NavLink to={`/app/${username}/dm`}>DMs</NavLink></li>
                 {servers.map(server => (
                     <li key={server.id}>
-                        <NavLink to={`/app/${server.id}/:channelId`}>{server.name}</NavLink>
+                        <NavLink to={`/app/${server.id}/:channelId`} activeClassName="active-server">{server.name}</NavLink>
                     </li>))}
             </ul>
             <Switch>
                 <Route path={`/app/${username}/dm`}>
-                    <p>DMs live here</p>
+                    <p>DMs would live here</p>
                 </Route>
 
                 <Route path={"/app/:serverId/:channelId"}>
