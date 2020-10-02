@@ -3,12 +3,12 @@ import { useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendMessage, getMessages } from  '../actions/postActions';
 import socketIOClient from 'socket.io-client';
-
+const socketUrl = process.env.REACT_APP_WS_URL || 'http://disc-order.herokuapp.com';
 
 const Chat = ({ channelId, posts }) => {
     const dispatch = useDispatch()
     const [messageText, setMessageText] = useState('')
-    const socket = socketIOClient(process.env.REACT_APP_WS_URL)
+    const socket = socketIOClient(socketUrl)
     const username = useSelector(state => state.auth.currUser)
 
     const handleChange = (e) => {

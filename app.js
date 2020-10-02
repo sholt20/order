@@ -21,8 +21,6 @@ app.use(cookieParser())
 app.use(cors());
 app.use(helmet({ hsts: false }));
 
-
-
 app.use(routes);
 
 // Serve React Application
