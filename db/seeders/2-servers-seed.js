@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
    return queryInterface.bulkInsert('Servers', [
      {
-       name: 'Test server 1',
+       name: 'Cool zone',
        owner_id: 1,
        dm: false,
        invite_link: '/1',
@@ -12,7 +12,7 @@ module.exports = {
        updatedAt: new Date(),
      },
      {
-       name: 'Test server 2',
+       name: 'Not Secret Discord',
        owner_id: 2,
        dm: false,
        invite_link: '/2',
@@ -20,7 +20,7 @@ module.exports = {
        updatedAt: new Date(),
      },
      {
-       name: 'Test server 3',
+       name: 'Shhhhh',
        owner_id: 3,
        dm: false,
        invite_link: '/3',

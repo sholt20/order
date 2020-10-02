@@ -24,7 +24,6 @@ const server = http.createServer(app);
 const io = socketio(server, { origins: '*:*'})
 
 io.on('connection', socket => {
-  console.log('New connection to WS')
 
   socket.on('chatMessage', (response) => {
     const resArr = response.split(' from ')

@@ -21,7 +21,6 @@ export const sendMessage = (message, channelId, username) => async (dispatch) =>
     })
     if (res.ok) {
         const newPost = await res.json();
-        console.log(newPost)
         dispatch(createPost(newPost))
     }
 }

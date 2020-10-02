@@ -8,7 +8,6 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_POSTS: {
-            console.log('in action', action)
             const newPosts = [...action.posts]
             const channelId = action.channelId
             return {

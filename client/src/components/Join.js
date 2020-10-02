@@ -27,7 +27,6 @@ const Join = ({ setServers, servers }) => {
         async function fetchData() {
             const res = await fetch(`/api/servers/join/${username}`)
             const { serverList } = await res.json()
-            console.log(serverList)
             setUnjoined(serverList)
         }
         fetchData()

@@ -104,3 +104,10 @@ form:hover,
 .send-button {
     top: 10px;
 }
+
+.join-button {
+    margin-top: 10px;
+    border: none;
+    font-size: 1em;
+    background-color: rgb(228, 233, 238);
+}

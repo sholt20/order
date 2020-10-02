@@ -24,7 +24,7 @@ router.post('/channel/:channelId', asyncHandler( async (req, res, next) => {
     const channel_id = parseInt(req.params.channelId, 10)
     const { message, username } = req.body
     if (!channel_id || !message || !username) {
-        console.log(message, username, channel_id)
+
     } else {
         const author = await User.findOne({ where: { username }})
         const author_id = author.dataValues.id

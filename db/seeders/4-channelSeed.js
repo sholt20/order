@@ -4,35 +4,47 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Channels', [
       {
-        name: 'Test Channel 1',
+        name: 'Howdy',
         server_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'Test Channel 2',
+        name: 'Welcome',
         server_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'Test Channel 3',
+        name: 'Anti-discord chat',
         server_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'Test Channel 4',
+        name: 'Empty channel',
         server_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'Test channel 5',
+        name: 'Behind you',
         server_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        name: 'General',
+        server_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'Cool zone',
+        server_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
   },
 

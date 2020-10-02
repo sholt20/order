@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendMessage } from  '../actions/postActions';
+import { sendMessage, getMessages } from  '../actions/postActions';
 import socketIOClient from 'socket.io-client';
 
 
@@ -21,10 +21,15 @@ const Chat = ({ channelId, posts }) => {
         dispatch(sendMessage(messageText, channelId, username))
     }
 
+    socket.on('message', data => {
+        const dataArr = data.split(' - ');
+        const username = dataArr[0];
+        const messageText = dataArr[1]
+        dispatch(getMessages(channelId))
+    })
+
     useEffect(() => {
-        socket.on('message', data => {
-            console.log(data)
-        })
+
     }, [channelId])
 
     return (
