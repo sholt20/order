@@ -15,17 +15,19 @@ const ChannelsList = () => {
 
     return (
         <>
-            <ul>
-                {channels.map(channel => (
-                    <li key={channel.id}>
-                        <NavLink to={`/app/${serverId}/${channel.id}`}>{channel.name}</NavLink>
-                    </li>
-                ))}
-            </ul>
-
+            <div className="channels-container">
+                <ul>
+                    {channels.map(channel => (
+                        <li key={channel.id} className="channel">
+                            <NavLink to={`/app/${serverId}/${channel.id}`}>{channel.name}</NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </div>
             <Switch>
                 <Route to={`/app/${serverId}/:channelId`} render={() => <Posts serverId={serverId} /> } />
             </Switch>
+
         </>
     )
 }

@@ -28,13 +28,15 @@ const Chat = ({ channelId, posts }) => {
     }, [channelId])
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <textarea onChange={handleChange} />
-                <button type="submit">Send</button>
-            </div>
+        <div className="chat-input-container">
+            <form onSubmit={handleSubmit}>
+                <div className="input-box">
+                    <textarea className="chat-box" onChange={handleChange} />
+                    <button className="signup-button send-button" type="submit">Send</button>
+                </div>
 
-        </form>
+            </form>
+        </div>
     )
 }
 

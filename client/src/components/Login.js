@@ -22,17 +22,23 @@ const Login = () => {
     const updatePassword = e => setPassword(e.target.value);
 
     return (
-        <div>
+        <div className='signup-container'>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input type="text" onChange={updateUsername} value={username}></input>
-                </label>
-                <label>
-                    Password:
-                    <input type="password" onChange={updatePassword} value={password}></input>
-                </label>
-                <button type="submit">Log In</button>
+                <div className="form-container">
+                    <div className=" username-field form-field">
+                        <label>
+                            Username:
+                            <input className="login-username-input input" type="text" onChange={updateUsername} value={username}></input>
+                        </label>
+                    </div>
+                    <div className="password-field form-field">
+                        <label>
+                            Password:
+                            <input className="login-password-input input" type="password" onChange={updatePassword} value={password}></input>
+                        </label>
+                    </div>
+                    <button className="signup-button" type="submit">Log In</button>
+                </div>
             </form>
         </div>
     )

@@ -14,14 +14,17 @@ const Posts = ({ serverId }) => {
     }, [channelId])
 
     return (
-        <div>
-            <div>
+        <div className="chat-container">
+            <div className="inner-chat-container">
                 {
                 isNaN(parseInt(channelId, 10))
                     ? null
                     : <ul>{
-                        posts.map(post => <div key={post.id}>
-                            <p>{post.author_name}</p><p>{post.message}</p>
+                        posts.map(post => <div className="idk-why-this-is-here" key={post.id}>
+                            <div className="message-box">
+                                <p className="message-author message-part">{post.author_name}</p>
+                                <p className="message-text message-part">{post.message}</p>
+                            </div>
                         </div>)
                     }
                     </ul>

@@ -25,6 +25,7 @@ label:hover {
 }
 
 .signup-container {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -39,4 +40,23 @@ label:hover {
     border-radius: 7px;
     background-color: rgb(223, 202, 83);
     border: none;
+}
+
+.input {
+    margin-left: 40px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+label {
+    display: flex;
+    justify-content: right;
+}
+
+.password-field {
+    margin-top: 20px;
+}
+
+.username-field {
+    margin-top: 10px;
 }
