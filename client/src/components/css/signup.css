@@ -1,0 +1,62 @@
+.form-container:hover {
+    box-shadow: none;
+}
+
+form:hover {
+    box-shadow: none;
+}
+
+label:hover {
+    box-shadow: none;
+}
+
+.form-field:hover {
+    box-shadow: none;
+}
+
+.signup-container:hover {
+    box-shadow: none;
+}
+
+.form-container {
+    background-color: rgb(228, 233, 238);
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.signup-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.email-field {
+    margin: 20px 0px;
+}
+
+.signup-button {
+    margin-top: 20px;
+    height: 1.8rem;
+    border-radius: 7px;
+    background-color: rgb(223, 202, 83);
+    border: none;
+}
+
+.input {
+    margin-left: 40px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+label {
+    display: flex;
+    justify-content: right;
+}
+
+.password-field {
+    margin-top: 20px;
+}
+
+.username-field {
+    margin-top: 10px;
+}

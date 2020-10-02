@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
-import UserList from './UsersList';
 import Login from './Login';
 import SignUp from './SignUp';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../actions/auth'
 import Home from './Home'
+import OrderApp from './OrderApp';
+import './css/navbar.css'
 
 const Navbar = () => {
     const current = useSelector(state => state.auth.currUser)
@@ -18,25 +19,20 @@ const Navbar = () => {
     return (
         <BrowserRouter>
             <nav>
-                {logCheck ? <p>Logged in as {current}</p> : null }
-                <ul>
-                    <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-                    <li><NavLink to="/users" activeClassName="active">Users</NavLink></li>
+                <ul className="navList">
+                    {logCheck ? <li className="navElement" id="username"><p>{current}</p></li> : null }
+                    <li className="navElement"><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
                     {logCheck
-                        ? <li><NavLink to={`/app/${current}`} activeClassName="active">Open Order</NavLink></li>
-                        : <li><NavLink to="/sign-up" activeClassName="active">Sign up</NavLink></li>
+                        ? <li className="navElement"><NavLink to={`/app/${current}`} activeClassName="active">Open Order</NavLink></li>
+                        : <li className="navElement"><NavLink to="/sign-up" activeClassName="active">Sign up</NavLink></li>
                     }
                     {logCheck
-                        ? <li><button onClick={handleLogOut}>Log out</button></li>
-                        : <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
+                        ? <li><button className="logout-button" onClick={handleLogOut}>Log out</button></li>
+                        : <li className="navElement"><NavLink to="/login" activeClassName="active">Login</NavLink></li>
                     }
                 </ul>
             </nav>
             <Switch>
-                <Route path="/users">
-                    <UserList />
-                </Route>
-
                 <Route path="/login">
                     <Login />
                 </Route>
@@ -47,7 +43,7 @@ const Navbar = () => {
 
                 <Route exact path={`/app/${ current }`}>
                     {current
-                        ? <p>In the app</p>
+                        ? <OrderApp username={ current }/>
                         : <Redirect to="/" />
                     }
                 </Route>

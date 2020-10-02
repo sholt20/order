@@ -30,7 +30,6 @@ router.post('/', email, username, password, asyncHandler( async (req, res, next)
     if (!errors.isEmpty()) {
         return next({ status: 422, errors: errors.array() });
     }
-    console.log(email, username, password)
     const hashed_password = await bcrypt.hashSync(password, 10);
 
     const newUser = await User.create({ username, email, hashed_password })
